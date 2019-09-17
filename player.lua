@@ -51,8 +51,8 @@ function init_player()
     h = 16 * 2,
     scale_spr = 2,
     
-    hp = 5,
-    max_hp = 5,
+    hp = 3,
+    max_hp = 3,
     
     skills = {},
     shoot = single_bullet,

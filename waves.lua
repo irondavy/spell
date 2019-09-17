@@ -50,9 +50,8 @@ function init_waves()
 
   slots = shuffle(slots)
 
-  waves[4][slots[1]] = 1 + irnd(1)
-  waves[4][slots[2]] = 2 + irnd(2)
-  waves[4][slots[3]] = 3 + irnd(3)
+  waves[4][slots[1]] = 2 + irnd(2)
+  waves[4][slots[2]] = 3 + irnd(3)
 
   slots = shuffle(slots)
 

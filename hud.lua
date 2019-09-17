@@ -51,31 +51,36 @@ function draw_hud()
     -- end
     
     -- life
-    local x = (GW - 20) / 2 - 12 - 2 * (30 + 5)
-    local y = 28    
+    local x = hud.w/2 - 37
+    local y = 175
     for i = 1, p.max_hp do 
-        circfill((i-1) * (30 + 5) + x + 13, 15 + y + sin(time_since_launch / p.hp*3 + (i/p.max_hp)) * 6, 12,  _colors.light_red)        
-        circfill((i-1) * (30 + 5) + x + 13, 15 + y + sin(time_since_launch / p.hp*3 + (i/p.max_hp)) * 6, 10, i > p.hp and _colors.black or _colors.light_red)
+        circfill((i-1) * 35 + x, y + sin(time_since_launch / p.hp*3 + (i/p.max_hp)) * 3, 12,  _colors.light_red)        
+        circfill((i-1) * 35 + x, y + sin(time_since_launch / p.hp*3 + (i/p.max_hp)) * 3, 10, i > p.hp and _colors.black or _colors.light_red)
     end
     
     -- wave
     local wv = current_wave == 0 and 1 or (current_wave == (#waves + 1) and "~" or current_wave)
     use_font("big")
     
+    y = hud.h * 1/2
+
     local str = "Wave"
-    cool_print(str, 100 - str_px_width(str) / 2, 15)
-    shaded_cool_print(wv, 100 - str_px_width(wv) / 2, 50 ) -- + sin_b * 2)
+    cool_print(str, hud.w/4 - str_px_width(str) / 2, y - 35)
+    shaded_cool_print(wv, hud.w/4 - str_px_width(wv) / 2, y) -- + sin_b * 2)
     
     -- score
     local str = p.score
-    shaded_cool_print(str, hud.w/2 - str_px_width(str) / 2 , hud.h * 3/4 - 5 )
+    shaded_cool_print(str, (hud.w/4 * 2) - str_px_width(str) / 2, y)
+
+    local str = "Score"
+    cool_print(str, (hud.w/4 * 2) - str_px_width(str) / 2, y - 35)
     
     -- PB
     local str_PB = max(p.score, PB or 0)
-    shaded_cool_print(str_PB, hud.w/4 - str_px_width(str_PB) / 2  - 68, hud.h * 3/4 - 10) -- + sin_b * 2 )
+    shaded_cool_print(str_PB, (hud.w/4 * 3) - str_px_width(str_PB) / 2, y) -- + sin_b * 2 )
     
     local str = "P.Best"
-    cool_print(str, hud.w/4 - str_px_width(str) / 2  - 68, hud.h * 3/4 - 50 )
+    cool_print(str, (hud.w/4 * 3) - str_px_width(str) / 2, y - 35)
     
     
   target()  

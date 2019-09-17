@@ -73,8 +73,9 @@ end
 
 function wall()
   bonuses.b_speed_mult  = 0.1
-  bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3
-  show_message("Slower shots, increased rate")
+  bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3.5
+  bonuses.b_range_mult = (bonuses.b_range_mult   or 1) * 2
+  show_message("Slower shots, increased rate, last longer")
 end
 
 function size_p()
@@ -83,11 +84,11 @@ function size_p()
 end
 
 function range_p()
-  bonuses.b_range_mult = (bonuses.b_range_mult   or 1) * 2
+  bonuses.b_range_mult = (bonuses.b_range_mult   or 1) * 3
   show_message("Shots last longer")
 end
 function firer_p()
-  bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3
+  bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3.5
   show_message("Increased shot rate")
 end
 
