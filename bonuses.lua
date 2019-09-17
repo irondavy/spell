@@ -46,16 +46,10 @@ function init_sk_tree()
   sk_tree_list = {
     { "Pierce", pierce },
     { "Sustain", range_p },
-    { "Sustain", range_p },
-    { "Bisect", more_bullets },
     { "Bisect", more_bullets },
     { "Force", dmg_p },
-    { "Force", dmg_p },
-    { "Tempo", firer_p },
     { "Tempo", firer_p },
     { "Volume", size_p },
-    { "Volume", size_p },
-    { "Velocity", speed_p },
     { "Velocity", speed_p },
     { "Viscosity", wall },
     { "Precision", accuracy },
@@ -68,6 +62,7 @@ end
 
 function speed_p()
   bonuses.b_speed_mult = (bonuses.b_speed_mult or 1) * 3
+  table.insert(sk_tree_list, { "Velocity", speed_p })
   show_message("Faster shots")
 end
 
@@ -80,25 +75,30 @@ end
 
 function size_p()
   bonuses.b_size_mult = (bonuses.b_size_mult or 1) * 2
+  table.insert(sk_tree_list, { "Volume", size_p })
   show_message("Larger shots")
 end
 
 function range_p()
   bonuses.b_range_mult = (bonuses.b_range_mult   or 1) * 3
+  table.insert(sk_tree_list, { "Sustain", range_p })
   show_message("Shots last longer")
 end
 function firer_p()
   bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3.5
+  table.insert(sk_tree_list, { "Tempo", firer_p })
   show_message("Increased shot rate")
 end
 
 function dmg_p()
   bonuses.damage = bonuses.damage + 2
+  table.insert(sk_tree_list, { "Force", dmg_p })
   show_message("More damage per shot")
 end
 
 function more_bullets() 
   p.shoot_times = p.shoot_times * 2
+  table.insert(sk_tree_list, { "Bisect", more_bullets })
   show_message("Double number of shots")
 end
 

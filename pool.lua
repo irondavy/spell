@@ -187,7 +187,7 @@ end
 lvl_up = {}
 
 function init_lvl_up()
-  lvl_up = { 1, 2, 3, 4 }
+  lvl_up = { 1, 2, 3 }
 end
 
 function pick_distinct_number( count, from, to) -- from and to are included
@@ -222,6 +222,7 @@ function update_lvl_up()
         time_leveled_up = time_leveled_up + 1
         local sk_choice = table.remove(sk_tree_list, i)
         sk_choice[2]()
+        sk_tree_list = shuffle(sk_tree_list)
         condition_met = true
       end
       if is_on_skill ~= was_on_skill then 

@@ -52,7 +52,7 @@ function draw_hud()
     
     -- life
     local x = hud.w/2 - 37
-    local y = 175
+    local y = 180
     for i = 1, p.max_hp do 
         circfill((i-1) * 35 + x, y + sin(time_since_launch / p.hp*3 + (i/p.max_hp)) * 3, 12,  _colors.light_red)        
         circfill((i-1) * 35 + x, y + sin(time_since_launch / p.hp*3 + (i/p.max_hp)) * 3, 10, i > p.hp and _colors.black or _colors.light_red)
