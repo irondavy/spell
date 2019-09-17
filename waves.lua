@@ -91,9 +91,9 @@ function update_waves(dt)
       
       if endless_mode then
       
-        init_enemy( random_enemy_type(nil)) 
+        init_enemy(random_enemy_type(nil)) 
         
-        endless_enemy_spawn_time = max(endless_enemy_spawn_time * .983, .35)
+        endless_enemy_spawn_time = max(endless_enemy_spawn_time * .985, .2)
         time_until_spawn = endless_enemy_spawn_time
       
       elseif not is_wave_ended() then
