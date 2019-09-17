@@ -169,7 +169,7 @@ screen_shake_timer = 0
 
 function screen_shake()
 
-  screen_shake_timer = min(screen_shake_timer + .3, .5 )
+  screen_shake_timer = min(screen_shake_timer + 1, 3)
 
 end
 
