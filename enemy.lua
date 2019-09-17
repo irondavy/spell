@@ -55,7 +55,7 @@ function init_enemy_types()
       maxspeed = 11,
       pattern = kamikaze_pattern,
       draw = draw_kamikaze,
-      blast_radius = 50,
+      blast_radius = 100,
       explosion_time = 1,
       color = _colors.white,
       points = 1
