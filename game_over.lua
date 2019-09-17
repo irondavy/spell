@@ -176,7 +176,7 @@ function draw_game_over()
     rectfill( button_x + border, button_y + border, button_x + button_w - border, button_y + button_h - border, color1) 
     use_font("leaderboard")
     local str = "Play again"
-    very_cool_print(str, button_x + 25, button_y + 20, 4, 4)
+    very_cool_print(str, button_x + 25, button_y + 30, 4, 4)
     
     if is_on_ng ~= was_on_ng then
       sugar.audio.sfx("hover") 

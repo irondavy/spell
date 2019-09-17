@@ -68,26 +68,26 @@ end
 
 function wall()
   bonuses.b_speed_mult  = 0.1
-  bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3.5
-  bonuses.b_range_mult = (bonuses.b_range_mult   or 1) * 2
-  show_message("Slower shots, increased rate, last longer")
+  bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 2
+  bonuses.b_range_mult = (bonuses.b_range_mult or 1) * 2
+  show_message("Slow, frequent, long-lasting")
 end
 
 function size_p()
-  bonuses.b_size_mult = (bonuses.b_size_mult or 1) * 2
+  bonuses.b_size_mult = (bonuses.b_size_mult or 1) * 1.75
   table.insert(sk_tree_list, { "Volume", size_p })
   show_message("Larger shots")
 end
 
 function range_p()
-  bonuses.b_range_mult = (bonuses.b_range_mult   or 1) * 3
+  bonuses.b_range_mult = (bonuses.b_range_mult or 1) * 3
   table.insert(sk_tree_list, { "Sustain", range_p })
   show_message("Shots last longer")
 end
 function firer_p()
   bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3.5
   table.insert(sk_tree_list, { "Tempo", firer_p })
-  show_message("Increased shot rate")
+  show_message("Faster shot rate")
 end
 
 function dmg_p()
