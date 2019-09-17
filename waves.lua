@@ -25,11 +25,11 @@ function init_waves()
 
   waves = {{}, {}, {}, {}, {}}
 
-  waves[1][1] =  2 + irnd(2)
-  waves[2][1] =  4 + irnd(4)
-  waves[3][1] =  8 + irnd(4)
-  waves[4][1] = 12 + irnd(4)
-  waves[5][1] = 16 + irnd(4)
+  waves[1][1] =  1 + irnd(2)
+  waves[2][1] =  2 + irnd(4)
+  waves[3][1] =  4 + irnd(4)
+  waves[4][1] =  8 + irnd(4)
+  waves[5][1] = 12 + irnd(4)
 
   -- Bosses
 

@@ -56,7 +56,7 @@ function init_enemy_types()
       pattern = kamikaze_pattern,
       draw = draw_kamikaze,
       blast_radius = 50,
-      explosion_time = 2,
+      explosion_time = 1,
       color = _colors.white,
       points = 1
     }
@@ -282,7 +282,7 @@ function follow_player(e, step)
   e.pos.x = e.pos.x + e.v.x
   e.pos.y = e.pos.y + e.v.y
   -- log(e.electrify_mult)
-  if e.electrify_mult > .1 and dist(e.pos.x + e.w/2, e.pos.y + e.h/2, p.pos.x + e.w/2, p.pos.y + e.h/2) < e.w *1.1 then
+  if e.electrify_mult > .1 and dist(e.pos.x + e.w/2, e.pos.y + e.h/2, p.pos.x + e.w/2, p.pos.y + e.h/2) < e.w * 0.5 then
     hit_player()
   end
   
