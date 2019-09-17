@@ -83,12 +83,12 @@ function update_bullets(dt)
       if b.life < .1 and b.explosive then
         b.is_exploding = true
       end    
-      for i, bb in pairs(bullets) do 
-        if bullet_alive(bb) and bb.from == "player" and dist(b.pos.x - bb.pos.x, b.pos.y - bb.pos.y) < b.r + bb.r then 
-          hit_bullet(b)
-          hit_bullet(bb)
-        end
-      end
+      -- for i, bb in pairs(bullets) do 
+      --   if bullet_alive(bb) and bb.from == "player" and dist(b.pos.x - bb.pos.x, b.pos.y - bb.pos.y) < b.r + bb.r then 
+      --     hit_bullet(b)
+      --     hit_bullet(bb)
+      --   end
+      -- end
     end
 
   end
