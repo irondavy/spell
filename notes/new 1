@@ -1,0 +1,144 @@
+define N S E W
+
+spawn at x,y and find where anim should take enemy.
+
+e.b_pos = { x = ..., y = ...}
+
+e.a_pos = { x = ..., y = ...}
+
+
+
+
+if N then spawn enemy = {x = border_w + irnd(ww - border_w*2) - e.w,
+                         y = - e.h
+                        }
+                        
+if S then spawn enemy = {x = border_w + irnd(ww - border_w*2) - e.w,
+                         y = hh
+                        }
+                        
+if E then spawn enemy = {x = ww,
+                         y = border_h + irnd(hh - border_h*2) - e.h,
+                        }   
+                        
+if W then spawn enemy = {x = - e.w,
+                         y = border_h + irnd(hh - border_h*2) - e.h
+                        }                        
+
+x,y after anim is 
+
+
+if N then spawn enemy = {x = x,
+                         y = border_h
+                        }
+                        
+if S then spawn enemy = {x = x,
+                         y = hh - border_h
+                        }
+                        
+if E then spawn enemy = {x = ww - border_w - e.w,
+                         y = y,
+                        }   
+                        
+if W then spawn enemy = {x = border_w,
+                         y = y
+                        }    
+
+if e.state == "spawning" then
+
+  e.pos.x = easeInOut(e.spawn_time - time_since_launch, e.b_pos.x, e.a_pos.x, 1)
+  e.pos.y = easeInOut(e.spawn_time - time_since_launch, e.b_pos.y, e.a_pos.y, 1)
+  
+end
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+function init_enemy(way)
+  
+  local e = {  
+    v = {
+      x = 0,
+      y = 0},  
+      
+    w = 16 * 2,
+    h = 16 * 2,
+    scale_spr = 2,
+    
+    spawning = true,
+    
+    state = "",
+    life = 3,
+    speed = 5 / 10,
+    minspeed = 4 / 10,
+    maxspeed = 6 / 10
+    
+  }  
+  
+  local b_pos
+  local a_pos
+  local way = way or irnd(4)
+
+  if way == 0 then  -- North
+  
+    b_pos = {x = border_w + irnd(ww - border_w*2) - e.w, y = - e.h}
+    a_pos = {x = 0, y = border_h*1.5 + e.h}
+    
+  elseif way == 1 then  -- South
+  
+    b_pos = {x = border_w + irnd(ww - border_w*2) - e.w, y = hh}
+    a_pos = {x = 0, y =  - border_h*1.5 }
+    
+  elseif way == 2 then  -- East
+  
+    b_pos = {x = ww, y = border_h + irnd(hh - border_h*2) - e.h}
+    a_pos = {x = 0, y = border_h*1.5}
+    
+  elseif way == 3 then  -- West
+  
+    b_pos = {x = - e.w, y = border_w + irnd(ww - border_w*2) - e.w}    
+    a_pos = {x = border_w*1.5 + e.w, y = 0}
+    
+  end
+  
+  log(way)
+  e.b_pos = b_pos
+  e.a_pos = a_pos
+  
+  e.pos = e.b_pos
+  
+  e.spawn_time = time_since_launch
+  
+  add(enemies, e)
+end

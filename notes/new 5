@@ -1,0 +1,35 @@
+done
+display PB on top left corner after hud redone
+done
+display PB at start of game (do that in new_game() with async function loading the pb)
+done
+display max between PB and p.score
+done
+have a quick very cool print to tell if PB was broken
+done
+have enemies redone
+done
+first enemy is really slow
+done
+second enemy is really fast
+done
+3rd enemy doesnt turn very much, exploses at distance into big explosion
+done
+4th enemy fires grenades (bullet with high velocity that dont explode on touch and hurt player if in radius at explosion)
+
+
+balance a bit the skills
+
+
+
+
+
+
+do some art (sound and sprite for all enemies, maybe something for the pool)
+  done
+  sprite for the enemies, player and bullets
+  display enemies
+  display player
+  display bullets
+  
+

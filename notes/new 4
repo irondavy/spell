@@ -1,0 +1,29 @@
+
+
+finish the skill tree
+2 days
+
+add 3 types of enemy
+2 days
+
+make some art and sound
+3 days
+
+
+
+
+
+enemies:
+
+
+
+  kamikaze : 
+    runs fast toward the player 
+    stop for .5 sec when near with exploding animation
+    explodes and if dist kp < blow_radius then hp - 1
+  
+  
+
+
+
+

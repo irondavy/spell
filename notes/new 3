@@ -1,0 +1,63 @@
+
+
+type of skills
+
+  
+  
+  categories:
+  
+    spawn of bullet :  do on_spawn[x](enemy)
+      shotgun bullets 
+      -- spawn more in an arc
+      big and slow moving
+      -- tweak size and speed
+      
+    on contact: find enemy and do on_contact[x](enemy)
+      piercing
+      -- doesnt lose life
+      rebound
+      -- get a new angle from +.33 to +.66
+      explosive bullets
+      -- create smaller bullets
+    
+    at movement update: call on_v_update[x](bullet)
+      
+    collision detection:
+      rays
+      -- have a function with an equation and a range between two points
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      rays
+      
+      starting point is bullet spawn, bullet moves with b.v
+      behind point moves at v speed after countdown
+      equation found at spawn and range calculated every frame if countdown 
+      
+      
+      y = mx+b
+      
+      m = (y2 - y1) / (x2 - x1)
+      b = y - mx
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
