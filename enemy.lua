@@ -20,7 +20,7 @@ function init_enemy_types()
     },
     {
       type = 2,
-      life = 3,
+      life = 5,
       speed = 4,
       minspeed = 3,
       maxspeed = 5,
@@ -31,7 +31,7 @@ function init_enemy_types()
     },
     {
       type = 3,
-      life = 2,
+      life = 3,
       speed = 1,
       minspeed = 1,
       maxspeed = 1,

@@ -47,8 +47,8 @@ function init_sk_tree()
     { "Pierce", pierce },
     { "Sustain", range_p },
     { "Sustain", range_p },
-    { "Mitosis", more_bullets },
-    { "Mitosis", more_bullets },
+    { "Bisect", more_bullets },
+    { "Bisect", more_bullets },
     { "Force", dmg_p },
     { "Force", dmg_p },
     { "Tempo", firer_p },
@@ -58,7 +58,7 @@ function init_sk_tree()
     { "Velocity", speed_p },
     { "Velocity", speed_p },
     { "Viscosity", wall },
-    { "Accuracy", accuracy },
+    { "Precision", accuracy },
     { "Restitution", rebounds },
     { "Valence", electricity }
   }
@@ -92,7 +92,7 @@ function firer_p()
 end
 
 function dmg_p()
-  bonuses.damage = bonuses.damage + 1
+  bonuses.damage = bonuses.damage + 2
   show_message("More damage per shot")
 end
 
