@@ -277,7 +277,7 @@ end
 
 function kamikaze_pattern(e)
   if e.exploding then
-    e.angle = atan2(e.v.x, e.v.y) - .04 + irnd(.07)
+    e.angle = atan2(e.v.x, e.v.y) - .04 + irnd(.02)
     e.v.x   = cos(e.angle)
     e.v.y   = sin(e.angle)
     
@@ -287,7 +287,7 @@ function kamikaze_pattern(e)
      e.exploded = true
      
      if dist(e.pos.x + e.w/2, e.pos.y+ e.h/2, p.pos.x+p.w/2, p.pos.y+ p.h/2) < e.blast_radius then hit_player() end
-     hit_enemy(e)
+     hit_enemy(e, 2)
      sugar.audio.sfx ("bullet_explosion") 
     end
   else

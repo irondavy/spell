@@ -132,11 +132,11 @@ function random_enemy_type(current_wave)
   if not current_wave then
     local choosen_id = 1 + irnd(100)
     
-    if choosen_id < 40 then return 1 end
+    if choosen_id < 50 then return 1 end
     
-    if choosen_id < 60 then return 2 end
+    if choosen_id < 75 then return 2 end
     
-    if choosen_id < 85 then return 3 end
+    if choosen_id < 90 then return 3 end
     
     return 4  
     
