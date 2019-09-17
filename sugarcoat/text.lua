@@ -74,7 +74,7 @@ local function str_px_height(str, font)
 end
 
 local _flr = math.floor
-local function print(str, x, y, c)
+local function printb(str, x, y, c)
   if c then color(c) end
   
   love.graphics.print(str, _flr(x)+0.5, _flr(y)+0.5)
@@ -184,7 +184,7 @@ local text = {
   
   str_px_width  = str_px_width,
   str_px_height = str_px_height,
-  print         = print,
+  printb         = printb,
   
   printp       = printp,
   printp_color = printp_color,

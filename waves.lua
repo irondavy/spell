@@ -23,9 +23,15 @@ function init_waves()
 
   -- Rats
 
-  waves = {{}, {}, {}, {}, {}}
+  waves = {
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0}
+  }
 
-  waves[1][1] =  1 + irnd(2)
+  waves[1][1] =  2 + irnd(2)
   waves[2][1] =  2 + irnd(4)
   waves[3][1] =  4 + irnd(4)
   waves[4][1] =  8 + irnd(4)

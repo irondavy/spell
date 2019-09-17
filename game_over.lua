@@ -112,16 +112,16 @@ function draw_game_over()
           -- rank
           x = border * 2
           str = index + (ox or 0) or ""
-          print(str, x , y, color3)
+          printb(str, x , y, color3)
           
           -- score
           x = x + column_w[1]
           str = highscores[player_id] and highscores[player_id].p_score or ""
-          print(str, x , y, color3)
+          printb(str, x , y, color3)
           -- player_name
           x = x + column_w[2]
           str = highscores[player_id] and highscores[player_id].p_name or ""
-          print(str, x , y, color3)
+          printb(str, x , y, color3)
           x = x + column_w[3]
         
         end
@@ -146,7 +146,7 @@ function draw_game_over()
       if index > 1 then
         big_line_v(border * 2 + ww - 20, 0, border * 2 + ww - 20, window_h, 3)
       end
-      print(str, border * 2 + ww , border, color3)
+      printb(str, border * 2 + ww , border, color3)
     
     end
     

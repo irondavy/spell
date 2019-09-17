@@ -6,14 +6,12 @@
 ---------
 -- tables
 
-s_names = {}
 skills = {}
 
 on_b_v_update_skills = {
   3,
   4,
-  5,
-  7
+  5
 }
 on_b_col_enemy_skills = {
   1,
@@ -21,45 +19,20 @@ on_b_col_enemy_skills = {
   6
 }
 
----------
-
----------
--- skill management
-
--- function fire()         add_skill(1) end
--- function electricity()  add_skill(2) end  
--- function damage()       add_skill(3) end 
-
--- function auto_aim()     add_skill(4) end  
--- function dash()         add_skill(5) end 
--- function double()       add_skill(6) end
-
--- function rebound()      add_skill(7) end
--- function shotgun()      add_skill(8) end
--- function explosion()    add_skill(9) end
-
 function init_skills()
-  s_names = {
-    "Fire Aspect!",
-    "Electricity Aspect!",
-    "Target Enemy",
-    "Dash!",
-    "Rebound",
-    "Recoil!"
-  }
   skills = {
     fire_aspect,        
     electricity_aspect,  
     auto_aim,     
     dash,   
     rebound,      
-    _recoil  
+    _recoil,
+    pierce_aspect
   }
 
   burning_time = 1  
   electrifying_time = 3
-  
-  electrify_spd_mult = .5  
+  electrify_spd_mult = .5
 end
 
 function add_skill(id)
@@ -108,23 +81,17 @@ function fire_aspect(parameters)
 end
 
 function burn_enemy(e)
-  
   if e.burning then
     e.time_burned = e.time_burned - burning_time * 3 / 4
   else
     e.burning = true
     e.time_burned = time_since_launch
   end
-  -- damage_done = true 
 end
 
 function electricity_aspect(parameters)
-  local e = parameters.enemy    
-  local b = parameters.bullet 
-    
+  local e = parameters.enemy
   electrify_enemy(e)
-  hit_bullet(b)
-  damage_done = true 
 end
 
 function electrify_enemy(e)      

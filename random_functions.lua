@@ -41,19 +41,19 @@ function cool_print(str, x, y, inner_col, outer_col)
   local margin = 2
   color(inner_col)
   
-  -- print(str, x-margin, y-margin)
-  -- print(str, x-margin, y)
-  -- print(str, x-margin, y+margin)
+  -- printb(str, x-margin, y-margin)
+  -- printb(str, x-margin, y)
+  -- printb(str, x-margin, y+margin)
   
-  -- print(str, x+margin, y-margin)
-  -- print(str, x+margin, y)
-  -- print(str, x+margin, y+margin)
+  -- printb(str, x+margin, y-margin)
+  -- printb(str, x+margin, y)
+  -- printb(str, x+margin, y+margin)
   
-  -- print(str, x, y-margin)
-  -- print(str, x, y+margin)
+  -- printb(str, x, y-margin)
+  -- printb(str, x, y+margin)
   
   color(outer_col)
-  print(str, x, y)
+  printb(str, x, y)
 
 end
 

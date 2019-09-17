@@ -84,35 +84,4 @@ function draw_hud()
   
 end
 
-function draw_bonuses()
-
-  use_font("log")
-    
-  local ct = 0
-  local h = (str_px_height("9"))
-  
-  for ind, b in pairs(bonus_points) do
-    color(_colors.white)
-    
-    local x = 30
-    local y = 15 + h * ct
-    
-    print(level_txt[ind], x , y )  
-    
-    for i = 0, (b-1) do
-      local w =  10
-      local x_spc = 5
-      local h = 10
-      
-      local xx = x + str_px_width(level_txt[ind]) + (w+x_spc) * i
-      local yy = y + 10
-      
-      rectfill( xx,  yy,  xx + w , yy + h, _colors.light_pink)  
-    end    
-    ct = ct + 1
-  end
-
-end
-
-
   

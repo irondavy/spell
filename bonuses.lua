@@ -37,48 +37,14 @@ level_txt = {
   "F-RTE" 
 }
 
-sk_tree = {
-  -- { [branch][level] : is_activated 
-  -- {0, 0, 0, 0, 0, 0},
-  -- {0, 0, 0, 0, 0, 0},
-  -- {0, 0, 0, 0, 0, 0},
-  -- {1, 1, 1, 1, 1, 0},
-  -- {1, 1, 1, 1, 1, 0}
-  -- {1, 1, 0, 0, 0, 0},
-  -- {1, 1, 0, 0, 0, 0},
-  -- {1, 1, 0, 0, 0, 0},
-}
 sk_tree_list = {}
-sk_tree_txt = {
-  -- { [branch][level] : is_activated 
-  -- {"Fire Aspect",        "Speed T-1",     "Damage T-1", "Fire Rate T-2", "Speed T-2", "Rebound"},
-  -- {"Electro Aspect",     "Size T-1",      "Auto-Aim",   "Double",        "Size T-2",  "Shotgun"},
-  -- {"Range T-1",          "Fire Rate T-1", "Dash"      , "Fire Rate T-2", "Range T-2", "Recoil"}
-}
-sk_tree_func = {
-  -- {fire,         speed_p, damage,   firer_p,      speed_p, rebounds},
-  -- {electricity , size_p,  auto_a,   more_bullets, size_p,  shotgun},
-  -- {range_p,      firer_p, dash_,    firer_p,      range_p, recoil}
-}
 
 function init_sk_tree()
 
   reset_bonuses()
 
-  sk_tree = {
-    -- { [branch][level] : is_activated 
-    -- {1, 1, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0}
-    -- {1, 1, 1, 1, 1, 0},
-    -- {1, 1, 1, 1, 1, 1},
-    -- {1, 1, 1, 1, 1, 1}
-    -- {1, 1, 1, 0, 0, 0},
-    -- {0, 0, 0, 0, 0, 0}
-  }
-
   sk_tree_list = {
+    { "Pierce", pierce },
     { "Range", range_p },
     { "Range", range_p },
     { "Bullets", more_bullets },
@@ -98,22 +64,6 @@ function init_sk_tree()
   }
   sk_tree_list = shuffle(sk_tree_list)
 
-  -- sk_tree_txt = {{}, {}, {}}
-  -- sk_tree_func = {{}, {}, {}}
-
-  -- for i = 1, 3 do
-  --   for j = 1, 6 do
-  --     local skill = table.remove(sk_tree_list)
-  --     table.insert(sk_tree_txt[i], skill[1])
-  --     table.insert(sk_tree_func[i], skill[2])
-  --   end
-  -- end
-
-  for branch_id, branch in pairs(sk_tree) do
-    for id, func in pairs(branch) do
-      if sk_tree[branch_id][id] == 1 then sk_tree_func[branch_id][id]() end
-    end
-  end  
 end
 
 function speed_p()
@@ -159,6 +109,11 @@ end
 function electricity()
   add_skill(2)
   show_message("Bullets stun enemies")
+end 
+
+function pierce()
+  add_skill(7)
+  show_message("Bullets pierce enemies")
 end 
 
 function fire()         add_skill(1)   show_message("It's getting hot in here.")  end

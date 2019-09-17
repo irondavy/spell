@@ -38,6 +38,7 @@ function init_bullet(from, x, y, angle, spd, size, life, speed_loss, param)
   b.is_nail = param.is_nail    
   
   count_bullets = count_bullets + 1
+  b.id = count_bullets
   bullets[count_bullets] = b
   -- sugar.audio.sfx ("bullet") 
   
@@ -63,8 +64,6 @@ function update_bullets(dt)
         sugar.audio.sfx ("bullet_explosion") 
       end
       bullets[i] = nil
-    elseif b.state == "hit" then
-      b.state = ""
     end
     
     update_vec_bullet(b, dt)
@@ -90,11 +89,9 @@ function update_bullets(dt)
           hit_bullet(bb)
         end
       end
-      
     end
-    
+
   end
-    
   
 end
 
@@ -144,32 +141,44 @@ end
 
 function collision_bullets(entity)
   local e = entity
-  
+
   for i, b in pairs(bullets) do 
-    if bullet_alive(b) and entity.class ~= b.from then      
+
+    if bullet_alive(b) and entity.class ~= b.from then
       local parameters = { bullet = b, enemy = e}
-      damage_done = true      
+
       if dist(e.pos.x + e.w/2 - b.pos.x, e.pos.y + e.w/2 - b.pos.y) < e.w / 2 + b.r then 
-        local no_skill = true
-        -----------------------
-        if b.from == "player" then  
-          for ind, func_id in pairs(on_b_col_enemy_skills) do          
+
+        local already_hit = false
+        if p.skills[7] then
+          for j, hit_bullet_id in pairs(e.hit_bullet_ids) do
+            if hit_bullet_id == b.id then
+              already_hit = true
+            end
+          end
+          if not already_hit then
+            table.insert(e.hit_bullet_ids, b.id)
+          end
+        end
+
+        if not already_hit then
+
+          for k, func_id in pairs(on_b_col_enemy_skills) do          
             if p.skills[func_id] then 
               skills[func_id](parameters) 
-              no_skill = false
             end             
-          end   
-        end
-        -----------------------
-        if no_skill or damage_done == true then
-          hit_bullet(b)
-          if b.from == "player" then
-            hit_enemy(e, b.damage)
+          end
+
+          if p.skills[7] then
+            b.state = "hit"
           else
-            hit_player()
-          end 
-        end 
-        -----------------------
+            hit_bullet(b)
+          end
+
+          hit_enemy(e, b.damage)
+
+        end
+
       end 
     end 
   end
@@ -184,58 +193,43 @@ function bullet_alive(bullet)
 end
 
 function draw_bullets()
-  
   for i, b in pairs(bullets) do
-  
-    if b.is_laser then
-      laser_drawing(b)
-    else    
-      vanilla_drawing(b)
-    end
-    
+    vanilla_drawing(b)
   end
 end
 
--- function laser_drawing(b)
-
-  -- if (b.angle > .5/4 and b.angle <.5 * 3/4) or (b.angle > .5 + .5/4 and b.angle <.5 + .5 * 3/4) then
-    -- big_line_v(b.pos.x, b.pos.y, b.pos.x + cos(b.angle) * b.laser_length , b.pos.y + sin(b.angle) * b.laser_length, 3)
-  -- else
-    -- big_line_h(b.pos.x, b.pos.y, b.pos.x + cos(b.angle) * b.laser_length , b.pos.y + sin(b.angle) * b.laser_length, 3)
-  -- end
--- end
-
-
 function vanilla_drawing(b)
-  if b.state == "to_die" or b.state == "dying" then
+  if b.state == "to_die" or b.state == "dying" or b.state == "hit" then
     circfill(b.pos.x, b.pos.y, b.r + 8, _colors.light_red)
+    if b.state == "hit" then
+      b.state = "spawned"
+    end
   else
     if b.from == "player" then
-        if b.electrified then
-          p_color = _colors.white
-          
-          local r_w = b.r
-          
-          local s_x = b.pos.x
-          local s_y = b.pos.y
-          local s_a = b.angle
-                   
-          local x = s_x + cos(s_a + 1/4) * r_w
-          local y = s_y + sin(s_a + 1/4) * r_w                 
+      if b.electrified then
+        p_color = _colors.white
+        
+        local r_w = b.r
+        
+        local s_x = b.pos.x
+        local s_y = b.pos.y
+        local s_a = b.angle
+                 
+        local x = s_x + cos(s_a + 1/4) * r_w
+        local y = s_y + sin(s_a + 1/4) * r_w                 
 
-          for i = 0, 5 do                
-            local r_x = cos(s_a + 1/2) * r_w
-            local r_y = sin(s_a + 1/2) * r_w
-                     
-            local xx = irnd(r_w)
-            local yy = irnd(r_w)
-            circfill(x + cos(s_a + 1/2) * xx * 3 + cos(s_a - 1/4) * yy * 2 ,
-                     y + sin(s_a + 1/2) * xx * 3 + sin(s_a - 1/4) * yy * 2 , 
-                     irnd(3),
-                     p_color)
-          end
+        for i = 0, 5 do                
+          local r_x = cos(s_a + 1/2) * r_w
+          local r_y = sin(s_a + 1/2) * r_w
+                   
+          local xx = irnd(r_w)
+          local yy = irnd(r_w)
+          circfill(x + cos(s_a + 1/2) * xx * 3 + cos(s_a - 1/4) * yy * 2 ,
+                   y + sin(s_a + 1/2) * xx * 3 + sin(s_a - 1/4) * yy * 2 , 
+                   irnd(3),
+                   p_color)
         end
-    
+      end
       
       if b.burning then
         pal(5, 2)
@@ -246,41 +240,6 @@ function vanilla_drawing(b)
       pal()
     else
       aspr (5, b.pos.x , b.pos.y , b.angle , 1, 1, 0.5, 0.5, 2 , 2 )
-      
-    -- if b.burning then
-      -- pal(5, 2)
-      -- pal(2, 5, false)
-    -- end
-    -- local b_color = _colors.white
-
-    -- if b.electrified or b.burning then
-
-      -- if b.burning then
-        -- b_color = _colors.light_red
-      -- end
-      
-      -- if b.electrified then
-        -- p_color = _colors.white
-
-        -- local r_w = b.r
-                 
-        -- local x = b.pos.x + cos(b.angle + 1/4) * r_w
-        -- local y = b.pos.y + sin(b.angle + 1/4) * r_w                 
-
-        -- for i = 0, 5 do                
-          -- local r_x = cos(b.angle + 1/2) * r_w
-          -- local r_y = sin(b.angle + 1/2) * r_w
-                   
-          -- local xx = irnd(r_w)
-          -- local yy = irnd(r_w)
-          -- circfill(x + cos(b.angle + 1/2) * xx * 3 + cos(b.angle - 1/4) * yy * 2 ,
-                   -- y + sin(b.angle + 1/2) * xx * 3 + sin(b.angle - 1/4) * yy * 2 , 
-                   -- irnd(3),
-                   -- p_color)
-        -- end
-      -- end
-    -- end     
-    -- circfill(b.pos.x, b.pos.y, b.r, b_color)    
 
       if b.is_exploding then
         circfill(b.pos.x , b.pos.y , b.blast_radius, flr(time_since_launch*10)%2 == 0 and _colors.black or _colors.light_red)

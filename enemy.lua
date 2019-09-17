@@ -96,6 +96,7 @@ function init_enemy(enemy_type)
     burning = false,
     electrified = false,
     electrify_mult = 1,
+    hit_bullet_ids = {},
     
     blast_radius = e_t.blast_radius,
     explosion_time = e_t.explosion_time,
@@ -146,31 +147,17 @@ end
 function update_enemies(dt)
 
   for i, e in pairs(enemies) do  
-     
+
     if e.state == "hurt" then
       e.state = ""
     elseif e.state == "to_die" then 
       add_points(e.points)
       enemies[i] = nil 
-      sugar.audio.sfx ("e_die") 
-      
-      -- target(back_surf)
-      -- pal(5, e.color)
-      -- aspr (15, e.pos.x + e.w/2, e.pos.y + e.h/2, 1/4 * irnd(4), 1, 1, .5, .5, 1 , 1 )
-      -- local v = 10
-      -- local o = 6
-      -- for i = 0, v do
-        -- for j = 0, v do
-          -- if (i + j) % 2 == 1 or chance(30) then  
-            -- rectfill(e.pos.x + i*2 + o, e.pos.y + j*2 + o,e.pos.x + i*2 + 1 + o, e.pos.y + j*2 + 1 + o , _colors.sea_blue)
-          -- end
-        -- end
-      -- end
-      -- pal()
-      -- target()
-      
+      sugar.audio.sfx("e_die") 
     end
-    update_enemy(e)    
+
+    update_enemy(e)   
+
   end
   
 end

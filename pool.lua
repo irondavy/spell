@@ -184,29 +184,6 @@ function rnd_pos_inside_pool(wsize, hsize)
   return x, y
 end
 
-
---------- lvl up
-
--- sk_tree = {
-  -- { [branch][level] : is_activated 
-  -- {0, 0, 0, 0, 0, 0},
-  -- {0, 0, 0, 0, 0, 0},
-  -- {0, 0, 0, 0, 0, 0}
--- }
-
--- sk_tree_txt = {
-  -- { [branch][level] : is_activated 
-  -- {"Fire Aspect",        "Speed T-1",     "Damage T-1", "Fire Rate T-2", "Speed T-2", "Rebound"},
-  -- {"Electricity Aspect", "Size T-1",      "Auto-Aim",   "Double",        "Size T-2",  "Shotgun"},
-  -- {"Range T-1",          "Fire Rate T-1", "Dash"      , "Fire Rate T-2", "Range T-2", "Explosions"}
--- }
-
--- sk_tree_func = {
-  -- {fire,         speed_p, damage,   firer_p,      speed_p, rebound},
-  -- {electricity , size_p,  auto_aim, more_bullets, size_p,  shotgun},
-  -- {range_p,      firer_p, dash,     firer_p,      range_p, explosion}
--- }
-
 lvl_up = {}
 
 function init_lvl_up()
