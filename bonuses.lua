@@ -45,22 +45,22 @@ function init_sk_tree()
 
   sk_tree_list = {
     { "Pierce", pierce },
-    { "Range", range_p },
-    { "Range", range_p },
-    { "Bullets", more_bullets },
-    { "Bullets", more_bullets },
-    { "Damage", dmg_p },
-    { "Damage", dmg_p },
-    { "Rate", firer_p },
-    { "Rate", firer_p },
-    { "Bigger", size_p },
-    { "Bigger", size_p },
-    { "Speed", speed_p },
-    { "Speed", speed_p },
-    { "Wall", wall },
+    { "Sustain", range_p },
+    { "Sustain", range_p },
+    { "Mitosis", more_bullets },
+    { "Mitosis", more_bullets },
+    { "Force", dmg_p },
+    { "Force", dmg_p },
+    { "Tempo", firer_p },
+    { "Tempo", firer_p },
+    { "Volume", size_p },
+    { "Volume", size_p },
+    { "Velocity", speed_p },
+    { "Velocity", speed_p },
+    { "Viscosity", wall },
     { "Accuracy", accuracy },
-    { "Ricochet", rebounds },
-    { "Shock", electricity }
+    { "Restitution", rebounds },
+    { "Valence", electricity }
   }
   sk_tree_list = shuffle(sk_tree_list)
 
@@ -68,52 +68,52 @@ end
 
 function speed_p()
   bonuses.b_speed_mult = (bonuses.b_speed_mult or 1) * 3
-  show_message("Speed up")
+  show_message("Faster shots")
 end
 
 function wall()
-  bonuses.b_speed_mult   = 0.1
-  bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3.5
-  show_message("Speed down, rate up")
+  bonuses.b_speed_mult  = 0.1
+  bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3
+  show_message("Slower shots, increased rate")
 end
 
 function size_p()
-  bonuses.b_size_mult = (bonuses.b_size_mult or 1) * 1.75
-  show_message("Larger bullets")
+  bonuses.b_size_mult = (bonuses.b_size_mult or 1) * 2
+  show_message("Larger shots")
 end
 
 function range_p()
-  bonuses.b_range_mult   = (bonuses.b_range_mult   or 1) * 2
-  show_message("Bullets last longer")
+  bonuses.b_range_mult = (bonuses.b_range_mult   or 1) * 2
+  show_message("Shots last longer")
 end
 function firer_p()
   bonuses.fire_rate_mult = (bonuses.fire_rate_mult or 1) * 3
-  show_message("Increased fire rate")
+  show_message("Increased shot rate")
 end
 
 function dmg_p()
   bonuses.damage = bonuses.damage + 1
-  show_message("More damage per bullet")
+  show_message("More damage per shot")
 end
 
 function more_bullets() 
-  p.shoot_times = p.shoot_times + 1
-  show_message("Extra bullet per shot")
+  p.shoot_times = p.shoot_times * 2
+  show_message("Double number of shots")
 end
 
 function rebounds()
   add_skill(5)
-  show_message("Bullets bounce off walls")
+  show_message("Shots bounce off walls")
 end
 
 function electricity()
   add_skill(2)
-  show_message("Bullets stun enemies")
+  show_message("Shots stun enemies")
 end 
 
 function pierce()
   add_skill(7)
-  show_message("Bullets pierce enemies")
+  show_message("Shots pierce enemies")
 end 
 
 function fire()         add_skill(1)   show_message("It's getting hot in here.")  end
