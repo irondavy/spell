@@ -1,8 +1,8 @@
 main: main.lua
 title: For a Spell
 owner: irondavy
-primaryColor: 430067
-coverImage: https://raw.githubusercontent.com/EliottmacR/manaficator/master/manaficator.png
+primaryColor: 000000
+coverImage: https://raw.githubusercontent.com/irondavy/spell/master/foraspell.png
 dimensions: full
 description: Mod of spaceling's Manaficator
 
