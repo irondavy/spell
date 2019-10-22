@@ -216,7 +216,7 @@ function update_lvl_up()
     
     if dist(xp - x, yp - y) < p.w * 1.5 then     
       is_on_skill = true
-      if btnp(9) then
+      if btnp(0) then
         sugar.audio.sfx("lvl_up") 
         -- log("level ".. level .. " in tree " .. i .. " named " .. sk_tree_txt[i][level])
         time_leveled_up = time_leveled_up + 1
@@ -251,7 +251,7 @@ function draw_lvl_up()
     circfill(x, y, ww/20, _colors.black)
     if dist(xp - x, yp - y) < p.w * 1.5 then    
       circfill(x, y - 2 + sin_b, ww/20 - sin_b*6, _colors.light_red)
-      local str = "Press 'F' to Choose"
+      local str = "Click to Choose"
       use_font("log")
       shaded_cool_print(str, xp - str_px_width(str)/2 , yp + str_px_height(str) + 4 + sin_b * 3, _colors.black)
         use_font("big")

@@ -35,14 +35,17 @@ function init_game()
   register_btn(3, 0, input_id("mouse_position", "y"))
   
   
-  register_btn(4,  0, {input_id("keyboard", "z"), 
+  register_btn(4,  0, {input_id("keyboard", "up"), 
                        input_id("keyboard", "w")})
                        
-  register_btn(5,  0, {input_id("keyboard", "q"), 
+  register_btn(5,  0, {input_id("keyboard", "left"), 
                        input_id("keyboard", "a")})
-                       
-  register_btn(6,  0, input_id("keyboard", "s"))
-  register_btn(7,  0, input_id("keyboard", "d"))
+
+  register_btn(6,  0, {input_id("keyboard", "down"), 
+                       input_id("keyboard", "s")})
+
+  register_btn(7,  0, {input_id("keyboard", "right"), 
+                       input_id("keyboard", "d")})
   
   register_btn(8,  0, input_id("keyboard", "p"))
   register_btn(9,  0, input_id("keyboard", "f"))
